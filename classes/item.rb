@@ -11,11 +11,6 @@ class Item
     @archived = archived || false
   end
 
-  def can_be_archived?
-    years_difference = years_since_publish_date
-    years_difference >= 10
-  end
-
   def move_to_archive
     return unless can_be_archived?
 
@@ -30,5 +25,10 @@ class Item
     current_date = Date.today
     publish_date = Date.parse(@publish_date)
     current_date.year - publish_date.year
+  end
+
+  def can_be_archived?
+    years_difference = years_since_publish_date
+    years_difference >= 10
   end
 end
