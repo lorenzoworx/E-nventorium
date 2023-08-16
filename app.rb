@@ -1,5 +1,5 @@
-require_relative './classes/book'
-require_relative './classes/label'
+require_relative 'classes/book'
+require_relative 'classes/label'
 
 class App
   attr_accessor :books, :labels
