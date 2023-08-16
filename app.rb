@@ -1,4 +1,14 @@
+require_relative './classes/book'
+require_relative './classes/label'
+
 class App
+  attr_accessor :books, :labels
+
+  def initialize()
+    @books = []
+    @labels = []
+  end
+
   OPTIONS = {
     '1' => :list_all_books,
     '2' => :list_all_music_albums,
@@ -18,7 +28,13 @@ class App
   end
 
   def list_all_books
-    puts 'List of books'
+    if @books.empty?
+      puts 'There are no books yet..'
+    else
+      @books.each do |book|
+        puts "Publisher: #{book.publisher} | Publish Date: #{book.publish_date} | Label title: #{book.label.title} | Label color: #{book.label.color} | Archived: #{book.archived}"
+      end
+    end
   end
 
   def list_all_music_albums
@@ -38,7 +54,13 @@ class App
   end
 
   def list_all_labels
-    puts 'List of labels'
+    if @labels.empty?
+      puts 'There are no labels yet..'
+    else
+      @labels.each do |label|
+        puts "Label title: #{label.title} | Color: #{label.color}"
+      end
+    end
   end
 
   def list_all_authors
@@ -50,7 +72,32 @@ class App
   end
 
   def add_a_book
-    puts 'Add a new book'
+    puts 'Add publish date of the book [Format (YYYY/MM/DD)]'
+    publish_date = gets.chomp
+    puts 'archive the book (Y/N)'
+    archived = gets.chomp
+    puts 'Add book publisher'
+    publisher = gets.chomp
+    puts 'Add book cover state'
+    cover_state = gets.chomp
+    puts 'Add book label title'
+    label_title = gets.chomp
+    puts 'Add book label color'
+    label_color = gets.chomp
+
+    if %w[Y y].include?(archived)
+      archived_value = true
+    elsif %w[N n].include?(archived)
+      archived_value = false
+    end
+
+    book = Book.new(publish_date, archived_value, publisher, cover_state)
+    my_label = Label.new(label_title, label_color)
+    book.add_label(my_label)
+    my_label.add_item(book)
+    @books << book
+    @labels << my_label
+    puts 'Book created successfully!'
   end
 
   def add_a_music_album
