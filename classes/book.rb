@@ -1,4 +1,5 @@
 require_relative 'item'
+require_relative 'label'
 
 class Book < Item
   attr_accessor :publisher, :cover_state
