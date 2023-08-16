@@ -16,6 +16,11 @@ class Item
     @archived = true
   end
 
+  def add_label(label)
+    @label = label
+    label.add_item(self)
+  end
+
   private
 
   def years_since_publish_date
