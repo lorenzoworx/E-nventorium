@@ -1,6 +1,6 @@
 require_relative 'item'
 class Game < Item
-  attr_accessor :title, :multiplayers, :lastplayed_date
+  attr_accessor :title, :multiplayers, :lastplayed_date, :publish_date, :author, :archived
 
   def initialize(title, publish_date, archived, multiplayers, lastplayed_date)
     super(nil, publish_date, archived)
@@ -8,8 +8,6 @@ class Game < Item
     @multiplayers = multiplayers
     @lastplayed_date = lastplayed_date
   end
-
-  attr_writer :author
 
   private
 
