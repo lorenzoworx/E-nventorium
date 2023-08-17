@@ -1,0 +1,28 @@
+{
+  "Books": [
+    {
+      "publisher": "pi",
+      "publish date": "2012-01-09",
+      "label_title": "mp",
+      "label_color": "ml",
+      "cover_state": "pp",
+      "archived": true
+    },
+    {
+      "publisher": "pub",
+      "publish date": "2020-09-09",
+      "label_title": "tit",
+      "label_color": "col",
+      "cover_state": "bad",
+      "archived": false
+    },
+    {
+      "publisher": "again",
+      "publish date": "2012-08-03",
+      "label_title": "Lab tit",
+      "label_color": "lab col",
+      "cover_state": "good",
+      "archived": true
+    }
+  ]
+}

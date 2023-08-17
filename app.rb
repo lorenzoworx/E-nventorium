@@ -1,11 +1,12 @@
 require_relative 'classes/book'
 require_relative 'classes/label'
+require_relative 'data_handlers/books_data_handler'
 
 class App
   attr_accessor :books, :labels
 
   def initialize()
-    @books = []
+    @books = SaveBooks.read
     @labels = []
   end
 
@@ -41,10 +42,6 @@ class App
     puts 'List of music albums'
   end
 
-  def list_all_movies
-    puts 'List of movies'
-  end
-
   def list_all_games
     puts 'List of games'
   end
@@ -65,10 +62,6 @@ class App
 
   def list_all_authors
     puts 'List of authors'
-  end
-
-  def list_all_sources
-    puts 'List of sources'
   end
 
   def add_a_book
@@ -97,6 +90,7 @@ class App
     my_label.add_item(book)
     @books << book
     @labels << my_label
+    SaveBooks.write(@books)
     puts 'Book created successfully!'
   end
 
