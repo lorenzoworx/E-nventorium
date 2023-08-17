@@ -1,15 +1,19 @@
 require_relative 'classes/music_album'
 require_relative 'classes/genre'
 require_relative 'data_handlers/music_albums_data_handler.rb'
+require_relative 'data_handlers/music_albums_data_handler.rb'
 
 class App
 include SaveMusicAlbums
+include SaveGenres
+
   attr_accessor :genre, :music_album
 
   def initialize()
     @genres = []
     @music_albums = []
     load_music_albums
+    load_genres
   end
   OPTIONS = {
     '1' => :list_all_books,
@@ -61,7 +65,7 @@ include SaveMusicAlbums
       puts "There are no genres yet. Go ahead and add some"
     else
       @genres.each_with_index do |genre, index|
-        puts "#{index}) Genre Name: #{genre.name}"
+        puts "#{index}) Genre Name: #{genre.name}, ID: #{genre.id}"
       end
     
     end
