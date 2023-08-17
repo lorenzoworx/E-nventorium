@@ -12,7 +12,7 @@ module SaveGenres
     json_data = @genres.map(&:to_hash)
     save_file(FILE_PATH, json_data)
   end
-  
+
   def load_file(file_name)
     data = File.read(file_name)
     JSON.parse(data)
@@ -20,7 +20,7 @@ module SaveGenres
 
   def load_genres
     genre_hash = []
-    return genre_hash unless File.exist? (FILE_PATH)
+    return genre_hash unless File.exist?(FILE_PATH)
 
     genre_hash = load_file(FILE_PATH)
     genre_hash.each do |genre|
@@ -28,5 +28,4 @@ module SaveGenres
       @genres << genre_obj
     end
   end
-  
 end

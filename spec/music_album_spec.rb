@@ -3,7 +3,6 @@ require_relative '..classes/genre'
 
 describe MusicAlbum do
   describe "Tests for 'MusicAlbum' class" do
-    
     before(:each) do
       @test_album = MusicAlbum.new(on_spotify: false, archived: false, publish_date: Date.today)
       @test_genre = Genre.new(id: 1, name: 'rap')
@@ -11,7 +10,6 @@ describe MusicAlbum do
     end
 
     context "when creating a new 'MusicAlbum' object" do
-      
       it "should create an instance of 'MusicAlbum' class" do
         expect(@test_album).to be_an_instance_of(MusicAlbum)
       end
@@ -19,11 +17,9 @@ describe MusicAlbum do
       it "should be a kind of 'Item'" do
         expect(@test_album).to be_kind_of(Item)
       end
-
     end
 
     context "When creating a new 'MusicAlbum'" do
-
       it "should have a valid 'id'" do
         expect(@test_album.id).to be_an_instance_of(Integer)
         expect(@test_album.id.nil?).to eq(false)
@@ -44,12 +40,10 @@ describe MusicAlbum do
         expect(@test_album.genre).to be_kind_of(Genre)
         expect(@test_album.genre).not_to be_nil
       end
-
     end
 
-    context "can_be_archived? method" do
-
-      it "should exist" do
+    context 'can_be_archived? method' do
+      it 'should exist' do
         expect(@test_album.private_methods(:can_be_archived?)).to be_truthy
       end
 
@@ -61,14 +55,10 @@ describe MusicAlbum do
           expect(album1.send(:can_be_archived?)).to be_truthy
         end
 
-        it "should retrun false otherwise" do 
+        it 'should retrun false otherwise' do
           expect(album2.send(:can_be_archived?)).to be_falsy
         end
-
       end
-
     end
-
   end
-
 end
