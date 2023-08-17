@@ -11,7 +11,6 @@ class Game < Item
     @author = nil
   end
 
-
   private
 
   def can_be_archived?
