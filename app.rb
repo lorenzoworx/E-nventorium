@@ -5,6 +5,7 @@ class App
   attr_accessor :genre, :music_album
 
   def initialize()
+    @genres = []
     @music_albums = []
   end
   OPTIONS = {
@@ -52,7 +53,16 @@ class App
   end
 
   def list_all_genres
-    puts 'List of genres'
+   
+    if @genres.empty?
+      puts "There are no genres yet. Go ahead and add some"
+    else
+      @genres.each_with_index do |genre, index|
+        puts "#{index}) Genre Name: #{genre.name}"
+      end
+    
+    end
+
   end
 
   def list_all_labels
