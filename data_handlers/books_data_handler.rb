@@ -25,7 +25,7 @@ class SaveBooks
     books_data = JSON.parse(File.read(FILE_PATH))
     books_list = []
     books_data['Books'].each do |book_data|
-      id = book_data['id']
+      book_data['id']
       publisher = book_data['publisher']
       publish_date = book_data['publish date']
       label_title = book_data['label_title']
