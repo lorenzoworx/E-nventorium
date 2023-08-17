@@ -31,9 +31,9 @@ class SaveBooks
       label_title = book_data['label_title']
       label_color = book_data['label_color']
       cover_state = book_data['cover_state']
-      archived = book_data['archived']
+      book_data['archived']
 
-      book = Book.new(publish_date, archived, publisher, cover_state)
+      book = Book.new(publish_date, publisher, cover_state)
       label = Label.new(label_title, label_color)
       book.add_label(label)
       books_list << book

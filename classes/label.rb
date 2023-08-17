@@ -11,6 +11,5 @@ class Label
 
   def add_item(item)
     items << item unless @items.include?(item) # To skip repeated items
-    item.label = self
   end
 end

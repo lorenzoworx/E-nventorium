@@ -8,7 +8,7 @@ class App
 
   def initialize()
     @books = SaveBooks.read
-    @labels = []
+    @labels = SaveLabels.read
   end
 
   OPTIONS = {
@@ -68,8 +68,6 @@ class App
   def add_a_book
     puts 'Add publish date of the book [Format (YYYY/MM/DD)]'
     publish_date = gets.chomp
-    puts 'archive the book (Y/N)'
-    archived = gets.chomp
     puts 'Add book publisher'
     publisher = gets.chomp
     puts 'Add book cover state'
@@ -79,13 +77,8 @@ class App
     puts 'Add book label color'
     label_color = gets.chomp
 
-    if %w[Y y].include?(archived)
-      archived_value = true
-    elsif %w[N n].include?(archived)
-      archived_value = false
-    end
-
-    book = Book.new(publish_date, archived_value, publisher, cover_state)
+    book = Book.new(publish_date, publisher, cover_state)
+    book.move_to_archive
     my_label = Label.new(label_title, label_color)
     book.add_label(my_label)
     my_label.add_item(book)
