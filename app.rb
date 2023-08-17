@@ -98,33 +98,28 @@ class App
     print 'Enter the game title: '
     game_title = gets.chomp
 
+    print 'Enter the publish date (YYYY-MM-DD): '
+    publish_date = gets.chomp
+
     print 'Enter the number of players: '
     num_players = gets.chomp.to_i
 
     print 'Enter the last played date (YYYY-MM-DD): '
     last_played_date = gets.chomp
 
-    new_game = Game.new(num_players, last_played_date)
-    new_game.title = game_title
-    
+    new_game = Game.new(game_title, publish_date, false, num_players, last_played_date)
+    add_game(new_game)
+
     puts 'Add a new author'
     print 'Enter the author\'s first name: '
     firstname = gets.chomp
     print 'Enter the author\'s last name: '
     lastname = gets.chomp
 
-    existing_author = @authors.find { |author| author.firstname == firstname && author.lastname == lastname }
-    if existing_author
-      new_author = existing_author
-    else
-      new_author = Author.new(firstname, lastname)
-      @authors << new_author
-    end
+    existing_author = find_or_create_author(firstname, lastname)
+    existing_author.add_item(new_game)
+    new_game.author = existing_author
 
-    new_author.add_item(new_game)
-
-    add_game(new_game)
-
-    puts "Added #{game_title} to the list of games."
+    puts "Added #{new_game.title} to the list of games by #{existing_author.firstname} #{existing_author.lastname}."
   end
 end
