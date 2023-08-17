@@ -1,12 +1,15 @@
 require_relative 'classes/music_album'
 require_relative 'classes/genre'
+require_relative 'data_handlers/music_albums_data_handler.rb'
 
 class App
+include SaveMusicAlbums
   attr_accessor :genre, :music_album
 
   def initialize()
     @genres = []
     @music_albums = []
+    load_music_albums
   end
   OPTIONS = {
     '1' => :list_all_books,
@@ -37,7 +40,7 @@ class App
     else
       @music_albums.each_with_index do |music_album, index|
         genre_name = music_album.genre ? music_album.genre.name : 'N/A'
-        puts "#{index}) on_spotify: #{music_album.on_spotify}, Publish Date: #{music_album.publish_date} Genre: #{genre_name}"
+        puts "#{index}) id:#{music_album.id} on_spotify: #{music_album.on_spotify}, Publish Date: #{music_album.publish_date} Genre: #{genre_name}"
       end
 
     end
