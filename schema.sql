@@ -5,3 +5,15 @@ CREATE TABLE items (
   archived BOOLEAN,
 );
 
+CREATE TABLE music_albums (
+  id INT PRIMARY KEY NOT NULL,
+  publish_date DATE,
+  archived Boolean,
+  on_spotify BOOLEAN,
+  FOREIGN KEY (genre_id) REFERENCES genres(id),
+);
+ 
+CREATE TABLE genres (
+  id INT PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL,
+)
