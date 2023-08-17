@@ -1,40 +1,37 @@
 require 'json'
-require_relative '../classes/genre'
 require_relative '../classes/music_album'
+require_relative '../classes/genre'
 
-module SaveMusicAlbums
-  FILE_PATH = 'data/music_albums.json'.freeze
+class SaveMusicAlbums
+  FILE_PATH = 'data/music_album.json'.freeze
 
-  def save_file(file_name, data)
-    File.write(file_name, JSON.pretty_generate(data))
+  def self.write(albums)
+    File.write(FILE_PATH, JSON.pretty_generate({ 'Albums' => Albums.map do |album|
+      {
+        'ID' => album.id,
+        'publish date' => album.publish_date.to_s,
+        'genre' => album.genre.name,
+        'archived' => album.archived
+      }
+    end }))
   end
 
-  def save_music
-    save_music_albums
-    save_genres
-  end
+  def self.read
+    return [] unless File.exist?(FILE_PATH)
 
-  def save_music_albums
-    json_data = @music_albums.map(&:to_hash)
-    save_file(FILE_PATH, json_data)
-  end
+    albums_data = JSON.parse(File.read(FILE_PATH))
+    albums_list = []
+    albums_data['Albums'].each do |album_data|
+      album_data['id']
+      publish_date = album_data['publish date']
+      genre = album_data['genre']
+      album_data['archived']
 
-  def load_file(file_name)
-    data = File.read(file_name)
-    JSON.parse(data)
-  end
-
-  def load_music_albums
-    music_albums_hash = []
-    return music_albums_hash unless File.exist?(FILE_PATH)
-
-    music_albums_hash = load_file(FILE_PATH)
-    music_albums_hash.each do |music_album|
-      music_obj = MusicAlbum.new(publish_date: music_album['publish_date'], on_spotify: music_album['on_spotify'],
-                                 id: music['id'])
-      genre_obj = @genres.find { |genre| genre.name == music_album['genre'] }
-      music_obj.add_genre(genre_obj)
-      @music_albums << music_obj
+      album = Album.new(publish_date:, on_spotify)
+      genre = Genre.new(name)
+      album.add_genre(genre)
+      albums_list << book
     end
+    albums_list
   end
 end

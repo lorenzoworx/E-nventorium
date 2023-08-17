@@ -1,18 +1,14 @@
 require_relative 'classes/music_album'
 require_relative 'classes/genre'
-require_relative 'data_handlers/music_albums_data_handler'
+require_relative 'data_handlers/music_album_data_handler'
+require_relative 'data_handlers/genre_data_handler'
 
 class App
-  include SaveMusicAlbums
-  include SaveGenres
-
-  attr_accessor :genre, :music_album
+  attr_accessor :genres, :music_albums
 
   def initialize()
-    @genres = []
-    @music_albums = []
-    load_music_albums
-    load_genres
+    @genres = SaveGenres.read
+    @music_albums = SaveMusicAlbums.read
   end
   OPTIONS = {
     '1' => :list_all_books,
@@ -40,10 +36,8 @@ class App
     if @music_albums.empty?
       puts 'There are no music albums yet. Go ahead and add some albums'
     else
-      @music_albums.each_with_index do |music_album, index|
-        genre_name = music_album.genre ? music_album.genre.name : 'N/A'
-        print "#{index}) id:#{music_album.id} on_spotify: #{music_album.on_spotify},"
-        print " Publish Date: #{music_album.publish_date} Genre: #{genre_name}"
+      @music_albums.each do |album|
+        puts "ID: #{album.id} | Publish Date: #{album.publish_date} | Genre name: #{album.genre.name} | Archived: #{album.archived}"
       end
 
     end
@@ -59,12 +53,11 @@ class App
 
   def list_all_genres
     if @genres.empty?
-      puts 'There are no genres yet. Go ahead and add some'
+      puts 'There are no Genres yet..'
     else
-      @genres.each_with_index do |genre, index|
-        puts "#{index}) Genre Name: #{genre.name}, ID: #{genre.id}"
+      @genres.each do |genre|
+        puts "Genre ID: #{genre.id} | Genre name: #{genre.name}"
       end
-
     end
   end
 
@@ -87,11 +80,18 @@ class App
   def add_a_music_album
     puts 'Enter the album publish date in the format: (YYYY/MM/DD)'
     publish_date = gets.chomp
+    puts 'Add the album genre'
+    album_gen = gets.chomp
     input_on_spotify = set_on_spotify
-    music_album = MusicAlbum.new(publish_date: publish_date, on_spotify: input_on_spotify)
-    genre = add_genre
-    music_album.add_genre(genre)
+
+    music_album = MusicAlbum.new(publish_date, input_on_spotify)
+    music_album.move_to_archive
+    my_genre = add_genre(album_gen)
+    music_album.add_genre(my_genre)
     @music_albums << music_album
+    @genres << my_genre
+    SaveMusicAlbums.write(@music_albums)
+    SaveGenres.write(@genres)
     puts 'Music album added successfully'
   end
 
@@ -102,26 +102,12 @@ class App
   private
 
   def set_on_spotify
-    puts "Is the music album on spotify? Press '1' for true and '2' for false"
-    on_spotify = gets.chomp.to_i
-    while on_spotify.nil? || on_spotify < 1 || on_spotify > 2
-      puts 'input number between 1 and 2'
-      on_spotify = gets.chomp.to_i
+  puts "Is the music album on spotify? [Y/N]"
+    on_spotify = gets.chomp
+    if (on_spotify == 'y' || on_spotify == 'Y')
+      return true
+    elsif (on_spotify == 'n' || on_spotify == 'N')
+      return false
     end
-    on_spotify == 1
-  end
-
-  def add_genre
-    puts 'Enter genre name'
-    input = gets.chomp
-    return_genre(input)
-  end
-
-  def return_genre(input)
-    @genres.each_with_inded do |genre, _index|
-      return genre if genre.name == input
-    end
-    new_genre = Genre.new(name: input)
-    @genres << new_genre
   end
 end

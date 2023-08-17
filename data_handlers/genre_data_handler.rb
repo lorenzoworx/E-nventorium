@@ -1,31 +1,28 @@
 require 'json'
 require_relative '../classes/genre'
 
-module SaveGenres
-  FILE_PATH = 'data/genres.json'.freeze
-
-  def save_file(file_name, data)
-    File.write(file_name, JSON.pretty_generate(data))
+class SaveGenres
+  def self.write(genres)
+    File.write('./data/genres.json', JSON.pretty_generate({ 'genres' => genres.map do |genre|
+      {
+        'id' => genre.id,
+        'name' => genre.name
+      }
+    end }))
   end
 
-  def save_genres
-    json_data = @genres.map(&:to_hash)
-    save_file(FILE_PATH, json_data)
-  end
+  def self.read
+    file_path = './data/genres.json'
+    return [] unless File.exist?(file_path)
 
-  def load_file(file_name)
-    data = File.read(file_name)
-    JSON.parse(data)
-  end
+    genres_data = JSON.parse(File.read(file_path))
+    genres_list = []
 
-  def load_genres
-    genre_hash = []
-    return genre_hash unless File.exist?(FILE_PATH)
-
-    genre_hash = load_file(FILE_PATH)
-    genre_hash.each do |genre|
-      genre_obj = Genre.new(name: genre['name'], id: genre['id'])
-      @genres << genre_obj
+    genres_data['genres'].each do |genre_data|
+      genre_data['id']
+      genre_data['name']
+      genres_list << Genre.new(genre_data)
     end
+    genres_list
   end
 end
