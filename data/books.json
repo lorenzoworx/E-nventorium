@@ -1,26 +1,29 @@
 {
   "Books": [
     {
-      "publisher": "pi",
-      "publish date": "2012-01-09",
-      "label_title": "mp",
-      "label_color": "ml",
-      "cover_state": "pp",
+      "ID": 250,
+      "publisher": "Youssef",
+      "publish date": "2010-02-14",
+      "label_title": "Title youssef",
+      "label_color": "Green",
+      "cover_state": "Not bad",
       "archived": true
     },
     {
-      "publisher": "pub",
-      "publish date": "2020-09-09",
-      "label_title": "tit",
-      "label_color": "col",
+      "ID": 405,
+      "publisher": "Rayan",
+      "publish date": "2014-08-22",
+      "label_title": "Rayan title",
+      "label_color": "Red",
       "cover_state": "bad",
       "archived": false
     },
     {
-      "publisher": "again",
-      "publish date": "2012-08-03",
-      "label_title": "Lab tit",
-      "label_color": "lab col",
+      "ID": 215,
+      "publisher": "Ranime",
+      "publish date": "2019-08-28",
+      "label_title": "Ranime title",
+      "label_color": "Orange",
       "cover_state": "good",
       "archived": true
     }

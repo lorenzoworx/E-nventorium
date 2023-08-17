@@ -1,6 +1,7 @@
 require_relative 'classes/book'
 require_relative 'classes/label'
 require_relative 'data_handlers/books_data_handler'
+require_relative 'data_handlers/labels_data_handler'
 
 class App
   attr_accessor :books, :labels
@@ -33,7 +34,7 @@ class App
       puts 'There are no books yet..'
     else
       @books.each do |book|
-        puts "Publisher: #{book.publisher} | Publish Date: #{book.publish_date} | Label title: #{book.label.title} | Label color: #{book.label.color} | Archived: #{book.archived}"
+        puts "ID: #{book.id} | Publisher: #{book.publisher} | Publish Date: #{book.publish_date} | Label title: #{book.label.title} | Label color: #{book.label.color} | Archived: #{book.archived}"
       end
     end
   end
@@ -55,7 +56,7 @@ class App
       puts 'There are no labels yet..'
     else
       @labels.each do |label|
-        puts "Label title: #{label.title} | Color: #{label.color}"
+        puts "Label ID: #{label.id} | Label title: #{label.title} | Color: #{label.color}"
       end
     end
   end
@@ -91,6 +92,7 @@ class App
     @books << book
     @labels << my_label
     SaveBooks.write(@books)
+    SaveLabels.write(@labels)
     puts 'Book created successfully!'
   end
 

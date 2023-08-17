@@ -8,6 +8,7 @@ class SaveBooks
   def self.write(books)
     File.write(FILE_PATH, JSON.pretty_generate({ 'Books' => books.map do |book|
       {
+        'ID' => book.id,
         'publisher' => book.publisher,
         'publish date' => book.publish_date.to_s,
         'label_title' => book.label.title,
@@ -24,11 +25,12 @@ class SaveBooks
     books_data = JSON.parse(File.read(FILE_PATH))
     books_list = []
     books_data['Books'].each do |book_data|
+      id = book_data['id']
       publisher = book_data['publisher']
       publish_date = book_data['publish date']
       label_title = book_data['label_title']
       label_color = book_data['label_color']
-      cover_state = book_data['cover_state'] # Update this line
+      cover_state = book_data['cover_state']
       archived = book_data['archived']
 
       book = Book.new(publish_date, archived, publisher, cover_state)
