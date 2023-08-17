@@ -82,10 +82,44 @@ class App
   end
 
   def add_a_music_album
-    puts 'Add a new music album'
+    puts "Enter the album publish date in the format: (YYYY/MM/DD)"
+    publish_date = gets.chomp
+    input_on_spotify = set_on_spotify
+    music_album = MusicAlbum.new(publish_date: publish_date, on_spotify: input_on_spotify)
+    genre = add_genre
+    music_album.add_genre(genre)
+    @music_albums << music_album
+    puts "Music album added successfully"
   end
 
   def add_a_game
     puts 'Add a new game'
   end
+
+  private
+  
+  def set_on_spotify
+    puts "Is the music album on spotify? Press '1' for true and '2' for false"
+    on_spotify = gets.chomp.to_i
+    while on_spotify.nil? || on_spotify < 1 || on_spotify > 2
+      puts 'input number between 1 and 2'
+      on_spotify = gets.chomp.to_i
+    end
+    on_spotify == 1
+  end
+
+  def add_genre
+    puts "Enter genre name"
+    input = gets.chomp
+    return_genre(input)
+  end
+
+  def return_genre(input)
+    @genres.each_with_inded do |genre, index|
+      return genre if genre.name == input
+    end
+    new_genre = Genre.new(name: input)
+    @genres << new_genre
+  end
+
 end
