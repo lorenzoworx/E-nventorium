@@ -1,4 +1,12 @@
+require_relative 'classes/music_album'
+require_relative 'classes/genre'
+
 class App
+  attr_accessor :genre, :music_album
+
+  def initialize()
+    @music_albums = []
+  end
   OPTIONS = {
     '1' => :list_all_books,
     '2' => :list_all_music_albums,
@@ -22,7 +30,17 @@ class App
   end
 
   def list_all_music_albums
-    puts 'List of music albums'
+    
+    if @music_albums.empty?
+      puts "There are no music albums yet. Go ahead and add some albums"
+    else
+      @music_albums.each_with_index do |music_album, index|
+        genre_name = music_album.genre ? music_album.genre.name : 'N/A'
+        puts "#{index}) on_spotify: #{music_album.on_spotify}, Publish Date: #{music_album.publish_date} Genre: #{genre_name}"
+      end
+
+    end
+
   end
 
   def list_all_movies
