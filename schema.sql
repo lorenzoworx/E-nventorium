@@ -1,6 +1,3 @@
-DROP TABLE IF EXISTS games;
-DROP TABLE IF EXISTS authors;
-
 CREATE TABLE authors (
     id SERIAL PRIMARY KEY,
     firstname VARCHAR(255) NOT NULL,
