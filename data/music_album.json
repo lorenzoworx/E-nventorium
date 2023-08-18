@@ -1,0 +1,18 @@
+{
+  "Albums": [
+    {
+      "ID": 279,
+      "publish date": "2000-10-09",
+      "genre": "Pop",
+      "archived": true,
+      "On spotify": true
+    },
+    {
+      "ID": 104,
+      "publish date": "2019-09-07",
+      "genre": "Ray",
+      "archived": false,
+      "On spotify": false
+    }
+  ]
+}
