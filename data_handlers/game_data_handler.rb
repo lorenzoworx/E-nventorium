@@ -15,7 +15,7 @@ class DataHandlerGame
         'author_last_name' => game.author.lastname,
         'multiplayers' => game.multiplayers,
         'lastplayed_date' => game.lastplayed_date,
-        'archived' => game.archived,
+        'archived' => game.archived
       }
     end
 
@@ -28,14 +28,14 @@ class DataHandlerGame
     games_data = JSON.parse(File.read(FILE_PATH))
     games_list = []
     games_data['games'].each do |game_data|
-      id = game_data['id']
+      game_data['id']
       publish_date = game_data['publish_date']
       title = game_data['title']
       author_first_name = game_data['author_first_name']
       author_last_name = game_data['author_last_name']
       multiplayers = game_data['multiplayers']
       lastplayed_date = game_data['lastplayed_date']
-      archived = game_data['archived']
+      game_data['archived']
 
       game = Game.new(publish_date, title, multiplayers, lastplayed_date)
       author = Author.new(author_first_name, author_last_name)

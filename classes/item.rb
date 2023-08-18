@@ -4,8 +4,6 @@ class Item
   attr_reader :id
   attr_accessor :publish_date, :archived, :genre, :author, :label
 
-  @@items = []
-
   def initialize(publish_date)
     @id = rand(1..1000)
     @publish_date = publish_date
@@ -20,7 +18,6 @@ class Item
   def add_author(author)
     @author = author
     author.add_item(self)
-
   end
 
   private
