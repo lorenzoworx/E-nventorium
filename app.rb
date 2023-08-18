@@ -1,6 +1,6 @@
 require_relative 'classes/music_album'
 require_relative 'classes/genre'
-require_relative 'data_handlers/music_album_data_handler'
+require_relative 'data_handlers/albums_data_handler.rb'
 require_relative 'data_handlers/genre_data_handler'
 
 class App
@@ -34,10 +34,10 @@ class App
 
   def list_all_music_albums
     if @music_albums.empty?
-      puts 'There are no music albums yet. Go ahead and add some albums'
+      puts 'There are no music albums yet. Go ahead and add some albums..'
     else
       @music_albums.each do |album|
-        puts "ID: #{album.id} | Publish Date: #{album.publish_date} | Genre name: #{album.genre.name} | Archived: #{album.archived}"
+        puts "ID: #{album.id} | Publish Date: #{album.publish_date} | Genre name: #{album.genre.name} | Archived: #{album.archived} | On spotify: #{album.on_spotify}"
       end
 
     end
@@ -81,12 +81,19 @@ class App
     puts 'Enter the album publish date in the format: (YYYY/MM/DD)'
     publish_date = gets.chomp
     puts 'Add the album genre'
-    album_gen = gets.chomp
-    input_on_spotify = set_on_spotify
+    genre_name = gets.chomp
 
-    music_album = MusicAlbum.new(publish_date, input_on_spotify)
+    puts "Is the music album on spotify? [Y/N]"
+    on_spotify_truth = gets.chomp
+    if (on_spotify_truth == 'y' || on_spotify_truth == 'Y')
+      on_spotify = true
+    elsif (on_spotify_truth == 'n' || on_spotify_truth == 'N')
+      on_spotify = false
+    end
+
+    music_album = MusicAlbum.new(publish_date, on_spotify)
     music_album.move_to_archive
-    my_genre = add_genre(album_gen)
+    my_genre = Genre.new(genre_name)
     music_album.add_genre(my_genre)
     @music_albums << music_album
     @genres << my_genre
@@ -97,17 +104,5 @@ class App
 
   def add_a_game
     puts 'Add a new game'
-  end
-
-  private
-
-  def set_on_spotify
-  puts "Is the music album on spotify? [Y/N]"
-    on_spotify = gets.chomp
-    if (on_spotify == 'y' || on_spotify == 'Y')
-      return true
-    elsif (on_spotify == 'n' || on_spotify == 'N')
-      return false
-    end
   end
 end

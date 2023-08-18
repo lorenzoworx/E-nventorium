@@ -1,5 +1,3 @@
-require_relative 'item'
-
 class Genre
   attr_reader :items, :id
   attr_accessor :name
@@ -10,7 +8,7 @@ class Genre
     @items = []
   end
 
-  def add_item=(item)
+  def add_item(item)
     item.genre = self
     items << item unless @items.include?(item) # To skip repeated items
   end
