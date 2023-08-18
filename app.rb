@@ -1,6 +1,9 @@
 require_relative 'classes/game'
 require_relative 'classes/item'
 require_relative 'classes/author'
+require_relative 'data_handlers/author_data_handler'
+require_relative 'data_handlers/game_data_handler'
+require 'json'
 
 class App
   OPTIONS = {
@@ -110,16 +113,21 @@ class App
     new_game = Game.new(game_title, publish_date, false, num_players, last_played_date)
     add_game(new_game)
 
-    puts 'Add a new author'
     print 'Enter the author\'s first name: '
     firstname = gets.chomp
+
     print 'Enter the author\'s last name: '
     lastname = gets.chomp
 
     existing_author = find_or_create_author(firstname, lastname)
     existing_author.add_item(new_game)
+
     new_game.author = existing_author
 
-    puts "Added #{new_game.title} to the list of games by #{existing_author.firstname} #{existing_author.lastname}."
+    puts "Added #{new_game.title} to the list of games by
+     #{existing_author.firstname} #{existing_author.lastname}."
+
+    DataHandlerAuthor.write(@authors)
+    DataHandlerGame.write(@games)
   end
 end

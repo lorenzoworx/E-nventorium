@@ -15,6 +15,10 @@ class Item
     author.add_item(self)
   end
 
+  def self.find_by_id(id)
+    @@items.find { |item| item.id == id }
+  end
+
   def move_to_archive
     return unless can_be_archived?
 
