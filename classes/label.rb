@@ -10,6 +10,7 @@ class Label
   end
 
   def add_item(item)
+    item.label = self
     items << item unless @items.include?(item) # To skip repeated items
   end
 end
