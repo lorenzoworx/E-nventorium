@@ -159,6 +159,6 @@ class App
     @games << game
     @authors << my_author
     DataHandlerGame.write(@games)
-    puts 'Book created successfully!'
+    puts 'Game created successfully!'
   end
 end
