@@ -1,6 +1,6 @@
 require_relative 'classes/music_album'
 require_relative 'classes/genre'
-require_relative 'data_handlers/albums_data_handler.rb'
+require_relative 'data_handlers/albums_data_handler'
 require_relative 'data_handlers/genre_data_handler'
 
 class App
@@ -83,11 +83,11 @@ class App
     puts 'Add the album genre'
     genre_name = gets.chomp
 
-    puts "Is the music album on spotify? [Y/N]"
+    puts 'Is the music album on spotify? [Y/N]'
     on_spotify_truth = gets.chomp
-    if (on_spotify_truth == 'y' || on_spotify_truth == 'Y')
+    if %w[y Y].include?(on_spotify_truth)
       on_spotify = true
-    elsif (on_spotify_truth == 'n' || on_spotify_truth == 'N')
+    elsif %w[n N].include?(on_spotify_truth)
       on_spotify = false
     end
 

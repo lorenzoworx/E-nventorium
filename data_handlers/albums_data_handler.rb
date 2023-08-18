@@ -19,15 +19,15 @@ class SaveMusicAlbums
 
   def self.read
     return [] unless File.exist?(FILE_PATH)
-  
+
     albums_data = JSON.parse(File.read(FILE_PATH))
     albums_list = []
     albums_data['Albums'].each do |album_data|
       publish_date = album_data['publish date']
       genre = album_data['genre']
-      archived = album_data['archived']
+      album_data['archived']
       on_spotify = album_data['On spotify']
-  
+
       album = MusicAlbum.new(publish_date, on_spotify)
       my_genre = Genre.new(genre)
       album.add_genre(my_genre)
@@ -36,5 +36,4 @@ class SaveMusicAlbums
     end
     albums_list
   end
-  
 end

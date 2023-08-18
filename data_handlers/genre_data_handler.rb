@@ -19,8 +19,8 @@ class SaveGenres
     genres_list = []
 
     genres_data['genres'].each do |genre_data|
-      id = genre_data['id']
-      genre_name = genre_data['name']
+      genre_data['id']
+      genre_data['name']
       genres_list << Genre.new(genre_data)
     end
     genres_list
