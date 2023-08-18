@@ -11,11 +11,11 @@ class Game < Item
     @author = nil
   end
 
-  private
-
   def can_be_archived?
-    super && last_played_older_than_two_years?
+    archived && last_played_older_than_two_years?
   end
+
+  private
 
   def last_played_older_than_two_years?
     current_date = Date.today
