@@ -1,16 +1,17 @@
+require_relative 'item'
+require_relative 'author'
 class Game < Item
-  attr_accessor :id, :title, :multiplayers, :lastplayed_date, :archived, :author
+  attr_accessor :title, :multiplayers, :lastplayed_date
 
-  def initialize(id, title, publish_date, archived, multiplayers, lastplayed_date)
-    super(id, publish_date, archived)
+  def initialize(publish_date, title, multiplayers, lastplayed_date)
+    super(publish_date)
     @title = title
     @multiplayers = multiplayers
     @lastplayed_date = lastplayed_date
-    @author = nil
   end
 
   def can_be_archived?
-    archived && last_played_older_than_two_years?
+    super && last_played_older_than_two_years?
   end
 
   private

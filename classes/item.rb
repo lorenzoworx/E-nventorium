@@ -1,25 +1,26 @@
 require 'date'
 
 class Item
-  attr_reader :id, :archived, :genre, :author, :source, :label
-  attr_accessor :publish_date
+  attr_reader :id
+  attr_accessor :publish_date, :archived, :genre, :author, :label
 
   @@items = []
 
-  def initialize(id, publish_date, archived)
-    @id = id || rand(1..1000)
+  def initialize(publish_date)
+    @id = rand(1..1000)
     @publish_date = publish_date
-    @archived = archived || false
+    @archived = false
+    @author = nil
   end
 
   def move_to_archive
-    return unless can_be_archived?
-
-    @archived = true
+    @archived = can_be_archived?
   end
 
-  def self.find_by_id(id)
-    @@items.find { |item| item.id == id }
+  def add_author(author)
+    @author = author
+    author.add_item(self)
+
   end
 
   private

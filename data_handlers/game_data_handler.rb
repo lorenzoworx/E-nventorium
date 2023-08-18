@@ -8,13 +8,14 @@ class DataHandlerGame
   def self.write(games)
     games_data = games.map do |game|
       {
-        'title' => game.title,
-        'multiplayers' => game.multiplayers,
-        'lastplayed_date' => game.lastplayed_date,
         'id' => game.id,
         'publish_date' => game.publish_date,
+        'title' => game.title,
+        'author_first_name' => game.author.firstname,
+        'author_last_name' => game.author.lastname,
+        'multiplayers' => game.multiplayers,
+        'lastplayed_date' => game.lastplayed_date,
         'archived' => game.archived,
-        'author_id' => game.author&.id
       }
     end
 
@@ -25,25 +26,22 @@ class DataHandlerGame
     return [] unless File.exist?(FILE_PATH)
 
     games_data = JSON.parse(File.read(FILE_PATH))
-    games_data['games'].map do |game_data|
-      game = Game.new(
-        game_data['id'],
-        game_data['title'],
-        game_data['publish_date'],
-        game_data['archived'],
-        game_data['multiplayers'],
-        game_data['lastplayed_date']
-      )
+    games_list = []
+    games_data['games'].each do |game_data|
+      id = game_data['id']
+      publish_date = game_data['publish_date']
+      title = game_data['title']
+      author_first_name = game_data['author_first_name']
+      author_last_name = game_data['author_last_name']
+      multiplayers = game_data['multiplayers']
+      lastplayed_date = game_data['lastplayed_date']
+      archived = game_data['archived']
 
-      game.id = game_data['id']
-      author_id = game_data['author_id']
-      game.author = find_author_by_id(author_id) if author_id
-
-      game
+      game = Game.new(publish_date, title, multiplayers, lastplayed_date)
+      author = Author.new(author_first_name, author_last_name)
+      game.add_author(author)
+      games_list << game
     end
-  end
-
-  def self.find_author_by_id(author_id)
-    AuthorDataHandler.read.find { |author| author.id == author_id }
+    games_list
   end
 end

@@ -1,13 +1,34 @@
 {
   "games": [
     {
-      "title": "make money",
+      "id": 526,
+      "publish_date": "2010-02-09",
+      "title": "PO£",
+      "author_first_name": null,
+      "author_last_name": null,
+      "multiplayers": 4,
+      "lastplayed_date": "2016-03-23",
+      "archived": false
+    },
+    {
+      "id": 563,
+      "publish_date": "2010-09-09",
+      "title": "ok",
+      "author_first_name": "pm",
+      "author_last_name": "ml",
+      "multiplayers": 4,
+      "lastplayed_date": "2022-09-09",
+      "archived": false
+    },
+    {
+      "id": 413,
+      "publish_date": "2019-09-09",
+      "title": "mm",
+      "author_first_name": "MM",
+      "author_last_name": "MM",
       "multiplayers": 2,
-      "lastplayed_date": "2023/08/01",
-      "id": 105,
-      "publish_date": "2023/04/12",
-      "archived": false,
-      "author_id": 255
+      "lastplayed_date": "2023-04-04",
+      "archived": false
     }
   ]
 }
