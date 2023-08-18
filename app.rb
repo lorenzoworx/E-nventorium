@@ -11,7 +11,6 @@ class App
     @authors = []
   end
 
-
   OPTIONS = {
     '1' => :list_all_books,
     '2' => :list_all_music_albums,
