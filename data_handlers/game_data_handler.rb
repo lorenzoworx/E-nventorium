@@ -1,6 +1,6 @@
-require 'json'
 require_relative '../classes/game'
 require_relative '../classes/author'
+require 'json'
 
 class DataHandlerGame
   FILE_PATH = './data/games.json'.freeze
@@ -37,9 +37,13 @@ class DataHandlerGame
 
       game.id = game_data['id']
       author_id = game_data['author_id']
-      game.author = Author.find_by_id(author_id) if author_id
+      game.author = find_author_by_id(author_id) if author_id
 
       game
     end
+  end
+
+  def self.find_author_by_id(author_id)
+    AuthorDataHandler.read.find { |author| author.id == author_id }
   end
 end
