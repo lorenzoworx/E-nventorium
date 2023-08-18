@@ -20,11 +20,11 @@ class Item
   def add_label(label)
     @label = label
     label.add_item(self)
+  end
 
   def add_genre(genre)
     @genre = genre
     genre.add_item(self)
-
   end
 
   private

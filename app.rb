@@ -10,7 +10,7 @@ require_relative 'data_handlers/albums_data_handler'
 require_relative 'data_handlers/genre_data_handler'
 
 class App
-  attr_accessor :books, :music_albums, :labels, :genres,
+  attr_accessor :books, :music_albums, :labels, :genres
 
   def initialize()
     @books = SaveBooks.read
@@ -18,7 +18,6 @@ class App
     @genres = SaveGenres.read
     @music_albums = SaveMusicAlbums.read
   end
-
 
   OPTIONS = {
     '1' => :list_all_books,
