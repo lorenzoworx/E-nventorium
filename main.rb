@@ -6,16 +6,14 @@ Please choose an option by entering a number (1-12):
 
 1 - List all books
 2 - List all music albums
-3 - List all movies
-4 - List all games
-5 - List all genres
-6 - List all labels
-7 - List all authors
-8 - List all sources
-9 - Add a new book
-10 - Add a new music album
-11 - Add a new game
-12 - Exit
+3 - List all games
+4 - List all genres
+5 - List all labels
+6 - List all authors
+7 - Add a new book
+8 - Add a new music album
+9 - Add a new game
+10 - Exit
 "
   puts list
   gets.chomp
@@ -28,9 +26,9 @@ def main
     number = list_options
 
     case number
-    when '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'
+    when '1', '2', '3', '4', '5', '6', '7', '8', '9'
       console.run(number)
-    when '12'
+    when '10'
       puts 'Thank you for using this app!'
       break
     else

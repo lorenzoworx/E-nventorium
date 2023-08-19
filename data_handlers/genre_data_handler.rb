@@ -19,9 +19,9 @@ class SaveGenres
     genres_list = []
 
     genres_data['genres'].each do |genre_data|
-      genre_data['id']
-      genre_data['name']
-      genres_list << Genre.new(genre_data)
+      genre = Genre.new(genre_data['name'])
+      genre.instance_variable_set(:@id, genre_data['id']) # Set the id directly, as it's a read-only attribute
+      genres_list << genre
     end
     genres_list
   end
