@@ -1,7 +1,7 @@
 {
   "Books": [
     {
-      "ID": 617,
+      "ID": 246,
       "publisher": "Otmane",
       "publish date": "2010-01-02",
       "label_title": "New",
@@ -10,12 +10,21 @@
       "archived": false
     },
     {
-      "ID": 917,
+      "ID": 339,
       "publisher": "Wolter",
       "publish date": "2022-10-19",
       "label_title": "Old",
       "label_color": "red",
       "cover_state": "bad",
+      "archived": false
+    },
+    {
+      "ID": 177,
+      "publisher": "Popopopop",
+      "publish date": "2003-02-19",
+      "label_title": "lab",
+      "label_color": "col",
+      "cover_state": "good",
       "archived": true
     }
   ]
