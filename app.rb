@@ -1,24 +1,15 @@
-require_relative 'classes/book'
-require_relative 'classes/music_album'
-
-require_relative 'classes/label'
-require_relative 'classes/genre'
-
-require_relative 'data_handlers/books_data_handler'
-require_relative 'data_handlers/labels_data_handler'
-require_relative 'data_handlers/albums_data_handler'
-require_relative 'data_handlers/genre_data_handler'
+require_relative 'classes/game'
+require_relative 'classes/author'
+require_relative 'data_handlers/game_data_handler'
+require_relative 'data_handlers/author_data_handler'
 
 class App
-  attr_accessor :books, :music_albums, :labels, :genres,
+  attr_accessor :books, :music_albums, :labels, :genres, :games, :authors
 
   def initialize()
-    @books = SaveBooks.read
-    @labels = SaveLabels.read
-    @genres = SaveGenres.read
-    @music_albums = SaveMusicAlbums.read
+    @games = DataHandlerGame.read
+    @authors = AuthorDataHandler.read
   end
-
 
   OPTIONS = {
     '1' => :list_all_books,
@@ -60,7 +51,13 @@ class App
   end
 
   def list_all_games
-    puts 'List of games'
+    if @games.empty?
+      puts 'There are no games yet..'
+    else
+      @games.each do |game|
+        puts "ID: #{game.id} | Title: #{game.title} | Publish Date: #{game.publish_date} | Author first Name: #{game.author.firstname} | Author first Name: #{game.author.lastname} | Archived: #{game.archived}"
+      end
+    end
   end
 
   def list_all_genres
@@ -84,7 +81,13 @@ class App
   end
 
   def list_all_authors
-    puts 'List of authors'
+    if @authors.empty?
+      puts 'There are no Authors yet..'
+    else
+      @authors.each do |author|
+        puts "Author ID: #{author.id} | Author first name: #{author.firstname} | Author last name: #{author.lastname}"
+      end
+    end
   end
 
   def add_a_book
@@ -106,8 +109,6 @@ class App
     my_label.add_item(book)
     @books << book
     @labels << my_label
-    SaveBooks.write(@books)
-    SaveLabels.write(@labels)
     puts 'Book created successfully!'
   end
 
@@ -131,12 +132,32 @@ class App
     music_album.add_genre(my_genre)
     @music_albums << music_album
     @genres << my_genre
-    SaveMusicAlbums.write(@music_albums)
-    SaveGenres.write(@genres)
     puts 'Music album added successfully'
   end
 
   def add_a_game
-    puts 'Add a new game'
+    puts 'Add publish date of the book [Format (YYYY/MM/DD)]'
+    publish_date = gets.chomp
+    puts 'Add game title'
+    title = gets.chomp
+    puts 'How many players are you?'
+    multiplayers = gets.chomp.to_i
+    puts 'Add publish date of the book [Format (YYYY/MM/DD)]'
+    lastplayed_date = gets.chomp
+    puts 'Add author first name'
+    firstname = gets.chomp
+    puts 'Add author last name'
+    lastname = gets.chomp
+
+    game = Game.new(publish_date, title, multiplayers, lastplayed_date)
+    game.move_to_archive
+    my_author = Author.new(firstname, lastname)
+    game.add_author(my_author)
+    my_author.add_item(game)
+    @games << game
+    @authors << my_author
+    DataHandlerGame.write(@games)
+    AuthorDataHandler.write(@authors)
+    puts 'Game created successfully!'
   end
 end
