@@ -141,11 +141,11 @@ To run tests, run the following command:
 - Twitter: [@lorenzoworx](https://twitter.com/lorenzoworx)
 - LinkedIn: [Oshoke Okolo](https://www.linkedin.com/in/oshokeokolo/)
 
-👤 **Author2**
+👤 **Otmane Echchafyky**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@otmaneechchafyky](ithub.com/otmaneechchafyky)
+- Twitter: [@EchchafykyO](https://twitter.com/EchchafykyO)
+- LinkedIn: [Otmane Echchafyky](https://www.linkedin.com/in/otmane-echchafyky)
 
 👤 **Author3**
 
