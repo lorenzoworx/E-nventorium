@@ -72,7 +72,7 @@ Navigate your digital world like never before. The visually captivating interfac
 
 ## 📼 Video Demo <a name="video-demo"></a>
 
-You can watch a video demonstration of this project [here](https://drive.google.com/file/d/1IEowRCY40RH0eyC43MlsrfzWzLr8nW6Y/view?usp=drive_link).
+You can watch a video demonstration of this project [here](https://drive.google.com/file/d/1FVcfJW7Pk3i_JgyPo4W_0xiRMir7Tdbc/view?usp=sharing).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
