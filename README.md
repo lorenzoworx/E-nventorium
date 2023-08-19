@@ -72,7 +72,7 @@ Navigate your digital world like never before. The visually captivating interfac
 
 ## 📼 Video Demo <a name="video-demo"></a>
 
-You can watch a video demonstration of this project [here]().
+You can watch a video demonstration of this project [here](https://drive.google.com/file/d/1IEowRCY40RH0eyC43MlsrfzWzLr8nW6Y/view?usp=drive_link).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -147,11 +147,10 @@ To run tests, run the following command:
 - Twitter: [@EchchafykyO](https://twitter.com/EchchafykyO)
 - LinkedIn: [Otmane Echchafyky](https://www.linkedin.com/in/otmane-echchafyky)
 
-👤 **Author3**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+👤 **Wolter**
+- GitHub: [@Bwambale](https://github.com/wolterbwambale)
+- Twitter: [@Bwambale](https://twitter.com/BwambaleWolter)
+- LinkedIn: [@Bwambale](https://www.linkedin.com/in/bwambale-benny-wolter/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
