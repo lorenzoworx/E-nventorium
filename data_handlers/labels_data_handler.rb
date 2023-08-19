@@ -17,10 +17,9 @@ class SaveLabels
     labels_list = []
 
     labels_data['labels'].each do |label_data|
-      label_data['id']
-      label_data['title']
-      label_data['color']
-      labels_list << Label.new(label_data)
+      label = Label.new(label_data['title'], label_data['color'])
+      label.instance_variable_set(:@id, label_data['id']) # Set the id directly, as it's a read-only attribute
+      labels_list << label
     end
     labels_list
   end

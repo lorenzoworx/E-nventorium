@@ -1,0 +1,19 @@
+{
+  "labels": [
+    {
+      "id": 448,
+      "title": "New",
+      "color": "green"
+    },
+    {
+      "id": 326,
+      "title": "Old",
+      "color": "red"
+    },
+    {
+      "id": 708,
+      "title": "lab",
+      "color": "col"
+    }
+  ]
+}

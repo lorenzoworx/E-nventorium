@@ -9,6 +9,8 @@ class Item
     @publish_date = publish_date
     @archived = false
     @author = nil
+    @label = nil
+    @genre = nil
   end
 
   def move_to_archive
@@ -18,6 +20,16 @@ class Item
   def add_author(author)
     @author = author
     author.add_item(self)
+  end
+
+  def add_label(label)
+    @label = label
+    label.add_item(self)
+  end
+
+  def add_genre(genre)
+    @genre = genre
+    genre.add_item(self)
   end
 
   private
