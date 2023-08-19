@@ -25,10 +25,9 @@ class AuthorDataHandler
     authors_list = []
 
     authors_data['authors'].each do |author_data|
-      author_data['id']
-      author_data['firstname']
-      author_data['lastname']
-      authors_list << Author.new(author_data['firstname'], author_data['lastname'])
+      author = Author.new(author_data['firstname'], author_data['lastname'])
+      author.instance_variable_set(:@id, author_data['id']) # Set the id directly, as it's a read-only attribute
+      authors_list << author
     end
     authors_list
   end

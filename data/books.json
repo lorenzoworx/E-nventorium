@@ -1,0 +1,22 @@
+{
+  "Books": [
+    {
+      "ID": 617,
+      "publisher": "Otmane",
+      "publish date": "2010-01-02",
+      "label_title": "New",
+      "label_color": "green",
+      "cover_state": "bad",
+      "archived": false
+    },
+    {
+      "ID": 917,
+      "publisher": "Wolter",
+      "publish date": "2022-10-19",
+      "label_title": "Old",
+      "label_color": "red",
+      "cover_state": "bad",
+      "archived": true
+    }
+  ]
+}

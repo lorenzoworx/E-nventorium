@@ -1,0 +1,25 @@
+{
+  "Albums": [
+    {
+      "ID": 952,
+      "publish date": "2011-12-12",
+      "genre": "Rap",
+      "archived": true,
+      "On spotify": true
+    },
+    {
+      "ID": 43,
+      "publish date": "2014-11-19",
+      "genre": "Ray",
+      "archived": false,
+      "On spotify": true
+    },
+    {
+      "ID": 448,
+      "publish date": "2012-01-11",
+      "genre": "Chaabi",
+      "archived": true,
+      "On spotify": true
+    }
+  ]
+}

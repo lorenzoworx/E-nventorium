@@ -1,7 +1,17 @@
+require_relative 'classes/book'
+require_relative 'classes/music_album'
 require_relative 'classes/game'
+
 require_relative 'classes/author'
+require_relative 'classes/label'
+require_relative 'classes/genre'
+
 require_relative 'data_handlers/game_data_handler'
 require_relative 'data_handlers/author_data_handler'
+require_relative 'data_handlers/books_data_handler'
+require_relative 'data_handlers/labels_data_handler'
+require_relative 'data_handlers/albums_data_handler'
+require_relative 'data_handlers/genre_data_handler'
 
 class App
   attr_accessor :books, :music_albums, :labels, :genres, :games, :authors
@@ -9,20 +19,22 @@ class App
   def initialize()
     @games = DataHandlerGame.read
     @authors = AuthorDataHandler.read
+    @books = SaveBooks.read
+    @labels = SaveLabels.read
+    @genres = SaveGenres.read
+    @music_albums = SaveMusicAlbums.read
   end
 
   OPTIONS = {
     '1' => :list_all_books,
     '2' => :list_all_music_albums,
-    '3' => :list_all_movies,
-    '4' => :list_all_games,
-    '5' => :list_all_genres,
-    '6' => :list_all_labels,
-    '7' => :list_all_authors,
-    '8' => :list_all_sources,
-    '9' => :add_a_book,
-    '10' => :add_a_music_album,
-    '11' => :add_a_game
+    '3' => :list_all_games,
+    '4' => :list_all_genres,
+    '5' => :list_all_labels,
+    '6' => :list_all_authors,
+    '7' => :add_a_book,
+    '8' => :add_a_music_album,
+    '9' => :add_a_game
   }.freeze
 
   def run(option)
@@ -109,6 +121,8 @@ class App
     my_label.add_item(book)
     @books << book
     @labels << my_label
+    SaveBooks.write(@books)
+    SaveLabels.write(@labels)
     puts 'Book created successfully!'
   end
 
@@ -132,6 +146,8 @@ class App
     music_album.add_genre(my_genre)
     @music_albums << music_album
     @genres << my_genre
+    SaveMusicAlbums.write(@music_albums)
+    SaveGenres.write(@genres)
     puts 'Music album added successfully'
   end
 
