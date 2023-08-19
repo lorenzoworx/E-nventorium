@@ -1,14 +1,14 @@
-# require_relative 'classes/book'
 require_relative 'classes/game'
 require_relative 'classes/author'
 require_relative 'data_handlers/game_data_handler'
+require_relative 'data_handlers/author_data_handler'
 
 class App
   attr_accessor :books, :music_albums, :labels, :genres, :games, :authors
 
   def initialize()
     @games = DataHandlerGame.read
-    @authors = []
+    @authors = AuthorDataHandler.read
   end
 
   OPTIONS = {
@@ -109,8 +109,6 @@ class App
     my_label.add_item(book)
     @books << book
     @labels << my_label
-    # SaveBooks.write(@books)
-    # SaveLabels.write(@labels)
     puts 'Book created successfully!'
   end
 
@@ -159,6 +157,7 @@ class App
     @games << game
     @authors << my_author
     DataHandlerGame.write(@games)
+    AuthorDataHandler.write(@authors)
     puts 'Game created successfully!'
   end
 end
