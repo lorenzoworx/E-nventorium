@@ -1,27 +1,19 @@
 {
   "labels": [
     {
-      "id": 293,
-      "title": {
-        "id": 91,
-        "title": "Team mem 1",
-        "color": "Green"
-      },
+      "id": 448,
+      "title": "New",
       "color": "green"
     },
     {
-      "id": 37,
-      "title": {
-        "id": 953,
-        "title": "title label",
-        "color": "ciel"
-      },
-      "color": "green"
+      "id": 326,
+      "title": "Old",
+      "color": "red"
     },
     {
-      "id": 52,
-      "title": "Ok",
-      "color": "Maron"
+      "id": 708,
+      "title": "lab",
+      "color": "col"
     }
   ]
 }

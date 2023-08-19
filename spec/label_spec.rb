@@ -26,15 +26,17 @@ RSpec.describe Label do
     end
   end
 
-  describe '#dd_item' do
-    let(:item) { Item.new('2023-08-16', false) }
+  describe '#add_item' do
+    let(:item) { instance_double(Item) }
 
     it 'adds an item to the items array' do
+      expect(item).to receive(:label=).with(label)
       label.add_item(item)
       expect(label.items).to include(item)
     end
 
     it 'does not add the same item twice' do
+      expect(item).to receive(:label=).with(label).exactly(2).times
       label.add_item(item)
       label.add_item(item)
       expect(label.items.count(item)).to eq(1)

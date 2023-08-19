@@ -7,7 +7,7 @@ RSpec.describe Book do
   let(:publisher) { 'Otmane Pub' }
   let(:cover_state) { 'Not bad' }
 
-  subject(:book) { Book.new(publish_date, archived, publisher, cover_state) }
+  subject(:book) { Book.new(publish_date, publisher, cover_state) }
 
   describe 'initialize' do
     it 'assigns publisher and cover_state attributes' do

@@ -1,0 +1,124 @@
+{
+  "games": [
+    {
+      "id": 533,
+      "publish_date": "2010-02-09",
+      "title": "PO£",
+      "author_first_name": null,
+      "author_last_name": null,
+      "multiplayers": 4,
+      "lastplayed_date": "2016-03-23",
+      "archived": false
+    },
+    {
+      "id": 929,
+      "publish_date": "2010-09-09",
+      "title": "ok",
+      "author_first_name": "pm",
+      "author_last_name": "ml",
+      "multiplayers": 4,
+      "lastplayed_date": "2022-09-09",
+      "archived": false
+    },
+    {
+      "id": 9,
+      "publish_date": "2019-09-09",
+      "title": "mm",
+      "author_first_name": "MM",
+      "author_last_name": "MM",
+      "multiplayers": 2,
+      "lastplayed_date": "2023-04-04",
+      "archived": false
+    },
+    {
+      "id": 450,
+      "publish_date": "2010-10-10",
+      "title": "nn",
+      "author_first_name": "ww",
+      "author_last_name": "ww",
+      "multiplayers": 2,
+      "lastplayed_date": "2019-01-01",
+      "archived": false
+    },
+    {
+      "id": 577,
+      "publish_date": "2012/02/02",
+      "title": "mankind",
+      "author_first_name": "ashim",
+      "author_last_name": "kim",
+      "multiplayers": 2,
+      "lastplayed_date": "2023/12/02",
+      "archived": false
+    },
+    {
+      "id": 419,
+      "publish_date": "2032-01-04",
+      "title": "pok",
+      "author_first_name": "nk",
+      "author_last_name": "nk",
+      "multiplayers": 98,
+      "lastplayed_date": "2039-03-08",
+      "archived": false
+    },
+    {
+      "id": 79,
+      "publish_date": "2018-12-11",
+      "title": "Call of duty",
+      "author_first_name": "OM",
+      "author_last_name": "ON",
+      "multiplayers": 4,
+      "lastplayed_date": "2023-01-09",
+      "archived": false
+    },
+    {
+      "id": 777,
+      "publish_date": "2010-04-18",
+      "title": "om",
+      "author_first_name": "om",
+      "author_last_name": "om",
+      "multiplayers": 4,
+      "lastplayed_date": "2020-01-02",
+      "archived": false
+    },
+    {
+      "id": 958,
+      "publish_date": "2010-09-09",
+      "title": "pm",
+      "author_first_name": "pppm",
+      "author_last_name": "ppppn",
+      "multiplayers": 2,
+      "lastplayed_date": "2012-02-04",
+      "archived": false
+    },
+    {
+      "id": 427,
+      "publish_date": "2017-02-11",
+      "title": "iiii",
+      "author_first_name": "aaaaaa",
+      "author_last_name": "aaaaaaaaaa",
+      "multiplayers": 5,
+      "lastplayed_date": "2023-09-09",
+      "archived": false
+    },
+    {
+      "id": 377,
+      "publish_date": "2011-02-02",
+      "title": "zzzzzzz",
+      "author_first_name": "ZZZZZz",
+      "author_last_name": "zzzz",
+      "multiplayers": 6,
+      "lastplayed_date": "2019-01-04",
+      "archived": false
+    },
+    {
+      "id": 496,
+      "publish_date": "1998-12-03",
+      "title": "tit",
+      "author_first_name": "fnam",
+      "author_last_name": "lnam",
+      "multiplayers": 1,
+      "lastplayed_date": "2007-12-09",
+      "archived": true
+    }
+  ]
+}

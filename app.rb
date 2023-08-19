@@ -1,18 +1,24 @@
 require_relative 'classes/book'
 require_relative 'classes/music_album'
+require_relative 'classes/game'
 
+require_relative 'classes/author'
 require_relative 'classes/label'
 require_relative 'classes/genre'
 
+require_relative 'data_handlers/game_data_handler'
+require_relative 'data_handlers/author_data_handler'
 require_relative 'data_handlers/books_data_handler'
 require_relative 'data_handlers/labels_data_handler'
 require_relative 'data_handlers/albums_data_handler'
 require_relative 'data_handlers/genre_data_handler'
 
 class App
-  attr_accessor :books, :music_albums, :labels, :genres
+  attr_accessor :books, :music_albums, :labels, :genres, :games, :authors
 
   def initialize()
+    @games = DataHandlerGame.read
+    @authors = AuthorDataHandler.read
     @books = SaveBooks.read
     @labels = SaveLabels.read
     @genres = SaveGenres.read
@@ -22,15 +28,13 @@ class App
   OPTIONS = {
     '1' => :list_all_books,
     '2' => :list_all_music_albums,
-    '3' => :list_all_movies,
-    '4' => :list_all_games,
-    '5' => :list_all_genres,
-    '6' => :list_all_labels,
-    '7' => :list_all_authors,
-    '8' => :list_all_sources,
-    '9' => :add_a_book,
-    '10' => :add_a_music_album,
-    '11' => :add_a_game
+    '3' => :list_all_games,
+    '4' => :list_all_genres,
+    '5' => :list_all_labels,
+    '6' => :list_all_authors,
+    '7' => :add_a_book,
+    '8' => :add_a_music_album,
+    '9' => :add_a_game
   }.freeze
 
   def run(option)
@@ -59,7 +63,13 @@ class App
   end
 
   def list_all_games
-    puts 'List of games'
+    if @games.empty?
+      puts 'There are no games yet..'
+    else
+      @games.each do |game|
+        puts "ID: #{game.id} | Title: #{game.title} | Publish Date: #{game.publish_date} | Author first Name: #{game.author.firstname} | Author first Name: #{game.author.lastname} | Archived: #{game.archived}"
+      end
+    end
   end
 
   def list_all_genres
@@ -83,7 +93,13 @@ class App
   end
 
   def list_all_authors
-    puts 'List of authors'
+    if @authors.empty?
+      puts 'There are no Authors yet..'
+    else
+      @authors.each do |author|
+        puts "Author ID: #{author.id} | Author first name: #{author.firstname} | Author last name: #{author.lastname}"
+      end
+    end
   end
 
   def add_a_book
@@ -136,6 +152,28 @@ class App
   end
 
   def add_a_game
-    puts 'Add a new game'
+    puts 'Add publish date of the book [Format (YYYY/MM/DD)]'
+    publish_date = gets.chomp
+    puts 'Add game title'
+    title = gets.chomp
+    puts 'How many players are you?'
+    multiplayers = gets.chomp.to_i
+    puts 'Add publish date of the book [Format (YYYY/MM/DD)]'
+    lastplayed_date = gets.chomp
+    puts 'Add author first name'
+    firstname = gets.chomp
+    puts 'Add author last name'
+    lastname = gets.chomp
+
+    game = Game.new(publish_date, title, multiplayers, lastplayed_date)
+    game.move_to_archive
+    my_author = Author.new(firstname, lastname)
+    game.add_author(my_author)
+    my_author.add_item(game)
+    @games << game
+    @authors << my_author
+    DataHandlerGame.write(@games)
+    AuthorDataHandler.write(@authors)
+    puts 'Game created successfully!'
   end
 end
